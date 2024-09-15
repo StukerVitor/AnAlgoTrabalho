@@ -59,7 +59,7 @@ Certifique-se de que o arquivo de entrada (in1) esteja no diretório in_out ante
 
 ### Força Bruta:
 
-Complexidade de tempo O(N⁴) devido aos loops aninhados que verificam todos os possíveis subretângulos.
+Complexidade de tempo O(N⁶) devido aos loops aninhados que verificam todos os possíveis subretângulos.
 
 ### Algoritmo de Kadane:
 
