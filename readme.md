@@ -8,9 +8,46 @@ Este projeto contém dois programas em C++ que implementam algoritmos para encon
   Implementa uma solução de força bruta para encontrar a soma máxima de um subretângulo em uma matriz.  
   Ele itera por todos os possíveis subretângulos e calcula suas somas para determinar o máximo.
 
+  ```txt
+  Função MaxSubretangulo(matriz)
+      maxSoma = -∞
+      Para linhaInicial de 1 até N:
+          Para linhaFinal de linhaInicial até N:
+              Para colunaInicial de 1 até N:
+                  Para colunaFinal de colunaInicial até N:
+                      somaAtual = 0
+                      Para linha de linhaInicial até linhaFinal:
+                          Para coluna de colunaInicial até colunaFinal:
+                              somaAtual += matriz[linha][coluna]
+                      maxSoma = máximo(maxSoma, somaAtual)
+      Retornar maxSoma
+  ```
+
+  Obs.: maxSoma = -∞ garante que mesmo uma soma muito negativa seja maior que -∞.
+
 - **sol_2.cpp**  
   Usa o algoritmo de Kadane para otimizar o processo de encontrar a soma máxima do subretângulo.  
   Reduz a complexidade calculando somas cumulativas das colunas e aplicando o algoritmo de Kadane nelas.
+
+  ```txt
+  Função Kadane(arr)
+      maxSoma = arr[0]
+      somaAtual = arr[0]
+      Para i de 1 até tamanho(arr):
+          somaAtual = máximo(arr[i], somaAtual + arr[i])
+          maxSoma = máximo(maxSoma, somaAtual)
+      Retornar maxSoma
+
+  Função MaxSubretangulo(matriz)
+      maxSoma = -∞
+      Para linhaInicial de 1 até N:
+          Cria array somaColunas[N] = {0}
+          Para linhaFinal de linhaInicial até N:
+              Para coluna de 1 até N:
+                  somaColunas[coluna] += matriz[linhaFinal][coluna]
+              maxSoma = máximo(maxSoma, Kadane(somaColunas))
+      Retornar maxSoma
+  ```
 
 ## Uso
 
